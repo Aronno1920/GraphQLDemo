@@ -1,6 +1,6 @@
 ﻿using System.Transactions;
 
-namespace GraphQLDemo.API.Schema
+namespace GraphQLDemo.API.Schema.Students
 {
     public class StudentType
     {

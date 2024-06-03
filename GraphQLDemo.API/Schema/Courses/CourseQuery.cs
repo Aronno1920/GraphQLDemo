@@ -1,14 +1,16 @@
 ﻿using Bogus;
+using GraphQLDemo.API.Schema.Instructors;
+using GraphQLDemo.API.Schema.Students;
 
-namespace GraphQLDemo.API.Schema
+namespace GraphQLDemo.API.Schema.Courses
 {
-    public class Query
+    public class CourseQuery
     {
         private readonly Faker<InstructorType> instructorFaker;
         private readonly Faker<StudentType> studentFacker;
         private readonly Faker<CourseType> courseFaker;
 
-        public Query()
+        public CourseQuery()
         {
             instructorFaker = new Faker<InstructorType>()
                 .RuleFor(c => c.Id, d => Guid.NewGuid())
@@ -29,7 +31,7 @@ namespace GraphQLDemo.API.Schema
                 .RuleFor(c => c.Instructor, f => instructorFaker.Generate())
                 .RuleFor(c => c.Students, f => studentFacker.Generate(10));
         }
-        
+
 
         public IEnumerable<CourseType> GetCourses()
         {
@@ -50,6 +52,6 @@ namespace GraphQLDemo.API.Schema
 
 
         [GraphQLDeprecated("The message is deprecated")]
-        public String welcomenote => "Welcome to GraphQL Demo project";
+        public string welcomenote => "Welcome to GraphQL Demo project";
     }
 }
