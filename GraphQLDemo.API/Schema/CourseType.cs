@@ -16,6 +16,8 @@
 
 
         public Subject Subject { get; set; }
+
+        [GraphQLNonNullType]
         public InstructorType Instructor { get; set; }
         public IEnumerable<StudentType> Students { get; set; }
     }
