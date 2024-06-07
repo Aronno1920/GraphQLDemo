@@ -11,4 +11,11 @@
     <PackageReference Include="HotChocolate.AspNetCore" Version="13.9.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Schema\Instructors\Mutation\" />
+    <Folder Include="Schema\Instructors\Query\" />
+    <Folder Include="Schema\Students\Mutation\" />
+    <Folder Include="Schema\Students\Query\" />
+  </ItemGroup>
+
 </Project>

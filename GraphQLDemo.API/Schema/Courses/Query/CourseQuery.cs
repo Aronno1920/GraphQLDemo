@@ -2,7 +2,7 @@
 using GraphQLDemo.API.Schema.Instructors;
 using GraphQLDemo.API.Schema.Students;
 
-namespace GraphQLDemo.API.Schema.Courses
+namespace GraphQLDemo.API.Schema.Courses.Query
 {
     public class CourseQuery
     {

@@ -1,4 +1,5 @@
-using GraphQLDemo.API.Schema.Courses;
+using GraphQLDemo.API.Schema.Courses.Mutation;
+using GraphQLDemo.API.Schema.Courses.Query;
 
 var builder = WebApplication.CreateBuilder(args);
 
