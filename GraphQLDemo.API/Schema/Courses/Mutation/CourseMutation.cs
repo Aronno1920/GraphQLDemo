@@ -1,4 +1,6 @@
-﻿using GraphQLDemo.API.Schema.Instructors;
+﻿using GraphQLDemo.API.Schema.Courses.Subscription;
+using GraphQLDemo.API.Schema.Instructors;
+using HotChocolate.Subscriptions;
 
 
 namespace GraphQLDemo.API.Schema.Courses.Mutation
@@ -12,7 +14,7 @@ namespace GraphQLDemo.API.Schema.Courses.Mutation
             _courses = new List<CourseResult>();
         }
 
-        public CourseResult CreateCourse(CourseInput courseInput)
+        public async Task<CourseResult> CreateCourse(CourseInput courseInput, [Service] ITopicEventSender eventSender)
         {
             CourseResult course = new CourseResult()
             {
@@ -23,23 +25,25 @@ namespace GraphQLDemo.API.Schema.Courses.Mutation
             };
 
             _courses.Add(course);
+            await eventSender.SendAsync(nameof(CourseSubscription.CourseCreated), course);
+
             return course;
         }
 
-        public CourseResult UpdateCourse(Guid courseId, CourseInput courseInput)
+        public async Task<CourseResult> UpdateCourse(Guid courseId, CourseInput courseInput, [Service] ITopicEventSender eventSender)
         {
             CourseResult course = _courses.FirstOrDefault(c => c.Id == courseId);
-
             if (course == null)
             {
                 throw new GraphQLException(new Error("Course not found", "NotFound"));
             }
-            else
-            {
-                course.Name = courseInput.Name;
-                course.Subject = courseInput.Subject;
-                course.InstructorId = courseInput.InstructorId;
-            }
+
+            course.Name = courseInput.Name;
+            course.Subject = courseInput.Subject;
+            course.InstructorId = courseInput.InstructorId;
+
+            string topicName = $"{course.Id}_{nameof(CourseSubscription.CourseUpdated)}";
+            await eventSender.SendAsync(topicName, course);
 
             return course;
         }
