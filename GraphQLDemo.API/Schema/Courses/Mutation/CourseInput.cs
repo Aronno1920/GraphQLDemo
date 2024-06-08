@@ -1,4 +1,5 @@
-﻿using GraphQLDemo.API.Schema.Courses.Query;
+﻿using GraphQLDemo.API.Domain.Common;
+using GraphQLDemo.API.Schema.Courses.Query;
 
 namespace GraphQLDemo.API.Schema.Courses.Mutation
 {

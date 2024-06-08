@@ -1,4 +1,4 @@
-﻿namespace GraphQLDemo.API.Schema.Instructors
+﻿namespace GraphQLDemo.API.Domain.Entities
 {
     public class InstructorDTO
     {

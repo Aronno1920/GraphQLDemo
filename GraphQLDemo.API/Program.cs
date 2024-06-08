@@ -1,6 +1,3 @@
-using HotChocolate.AspNetCore;
-using HotChocolate.AspNetCore.Subscriptions;
-using HotChocolate.Subscriptions;
 using GraphQLDemo.API.Schema.Courses.Mutation;
 using GraphQLDemo.API.Schema.Courses.Query;
 using GraphQLDemo.API.Schema.Courses.Subscription;
@@ -14,6 +11,10 @@ builder.Services
     .AddMutationType<CourseMutation>()
     .AddSubscriptionType<CourseSubscription>()
     .AddInMemorySubscriptions();
+
+
+
+
 
 var app = builder.Build();
 

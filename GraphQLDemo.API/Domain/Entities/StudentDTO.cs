@@ -1,6 +1,6 @@
 ﻿using System.Transactions;
 
-namespace GraphQLDemo.API.Schema.Students
+namespace GraphQLDemo.API.Domain.Entities
 {
     public class StudentDTO
     {

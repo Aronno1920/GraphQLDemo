@@ -1,16 +1,14 @@
 ﻿using GraphQLDemo.API.Domain.Common;
-using GraphQLDemo.API.Schema.Instructors;
-using GraphQLDemo.API.Schema.Students;
 
-namespace GraphQLDemo.API.Schema.Courses.Query
+namespace GraphQLDemo.API.Domain.Entities
 {
-    public class CourseType
+    public class CourseDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Subject Subject { get; set; }
 
-        [GraphQLNonNullType]
+        public Guid InstructorId { get; set; }
         public InstructorDTO Instructor { get; set; }
         public IEnumerable<StudentDTO> Students { get; set; }
     }

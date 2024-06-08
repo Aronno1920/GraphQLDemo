@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using GraphQLDemo.API.Domain.Common;
 using GraphQLDemo.API.Schema.Instructors;
 using GraphQLDemo.API.Schema.Students;
 
@@ -6,19 +7,19 @@ namespace GraphQLDemo.API.Schema.Courses.Query
 {
     public class CourseQuery
     {
-        private readonly Faker<InstructorType> instructorFaker;
-        private readonly Faker<StudentType> studentFacker;
+        private readonly Faker<InstructorDTO> instructorFaker;
+        private readonly Faker<StudentDTO> studentFacker;
         private readonly Faker<CourseType> courseFaker;
 
         public CourseQuery()
         {
-            instructorFaker = new Faker<InstructorType>()
+            instructorFaker = new Faker<InstructorDTO>()
                 .RuleFor(c => c.Id, d => Guid.NewGuid())
                 .RuleFor(c => c.FirstName, d => d.Name.FindName())
                 .RuleFor(c => c.LastName, d => d.Name.LastName())
                 .RuleFor(c => c.Salary, d => d.Random.Double(0, 1000000));
 
-            studentFacker = new Faker<StudentType>()
+            studentFacker = new Faker<StudentDTO>()
                 .RuleFor(c => c.Id, d => Guid.NewGuid())
                 .RuleFor(c => c.FirstName, d => d.Name.FindName())
                 .RuleFor(c => c.LastName, d => d.Name.LastName())
